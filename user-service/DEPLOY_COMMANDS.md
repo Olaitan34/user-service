@@ -8,6 +8,7 @@ When creating/configuring your project in Leapcell:
 - **Branch:** `user-service`
 - **Root Directory:** `.` (dot) or leave empty
 - **Dockerfile:** `Dockerfile` (auto-detected)
+- **Latest Commit:** `c00d3e5` (fixed .dockerignore)
 
 ## Build & Start Commands
 
