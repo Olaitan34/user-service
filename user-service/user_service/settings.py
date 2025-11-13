@@ -212,6 +212,7 @@ SIMPLE_JWT = {
 }
 
 # Logging Configuration
+# Use console-only logging on production platforms (like Render) where filesystem is read-only
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -222,14 +223,6 @@ LOGGING = {
         },
     },
     'handlers': {
-        'file': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': BASE_DIR / 'logs' / 'user_service.log',
-            'maxBytes': 1024 * 1024 * 10,  # 10MB
-            'backupCount': 5,
-            'formatter': 'verbose',
-        },
         'console': {
             'level': 'INFO',
             'class': 'logging.StreamHandler',
@@ -237,7 +230,7 @@ LOGGING = {
         },
     },
     'root': {
-        'handlers': ['console', 'file'],
+        'handlers': ['console'],
         'level': 'INFO',
     },
 }
