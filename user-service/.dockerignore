@@ -28,9 +28,10 @@ local_settings.py
 .gitattributes
 
 # Docker
-Dockerfile*
-docker-compose*.yml
-.dockerignore
+# Dockerfile and docker-compose files are needed for deployment
+# Dockerfile*
+# docker-compose*.yml
+# .dockerignore
 
 # Environment
 .env
