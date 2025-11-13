@@ -23,11 +23,11 @@ RUN useradd -m -u 1000 appuser && \
     chown -R appuser:appuser /app
 
 # Copy requirements and install Python dependencies
-COPY --chown=appuser:appuser user-service/requirements.txt .
+COPY --chown=appuser:appuser requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
-COPY --chown=appuser:appuser user-service/ .
+COPY --chown=appuser:appuser . .
 
 # Switch to non-root user
 USER appuser
