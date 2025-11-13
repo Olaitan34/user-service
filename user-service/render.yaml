@@ -1,0 +1,48 @@
+# Render Blueprint for Django User Service
+# Documentation: https://render.com/docs/blueprint-spec
+
+services:
+  # Web Service (Django App)
+  - type: web
+    name: user-service
+    env: python
+    region: oregon
+    plan: free
+    branch: user-service
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn user_service.wsgi:application --bind 0.0.0.0:$PORT --workers 4 --timeout 60 --access-logfile - --error-logfile -"
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: DJANGO_SETTINGS_MODULE
+        value: user_service.settings
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: USE_POSTGRES
+        value: true
+      - key: REDIS_HOST
+        sync: false
+      - key: REDIS_PORT
+        value: 6379
+      - key: REDIS_PASSWORD
+        sync: false
+      - key: REDIS_DB
+        value: 0
+      - key: USE_REDIS
+        value: true
